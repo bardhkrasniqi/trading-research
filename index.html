@@ -16,7 +16,15 @@
   }
   body { margin: 0; background: var(--page); color: var(--ink);
          font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 48px 20px; }
+  #scanbar { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; gap: 10px;
+    background: var(--surface); border-bottom: 1px solid var(--border); padding: 8px 20px; font-size: 13px; }
+  #scanbar .sb-label { text-transform: uppercase; letter-spacing: .08em; font-weight: 600;
+    color: var(--ink-2); font-size: 11px; white-space: nowrap; }
+  #scanbar select { font: inherit; font-size: 13px; background: var(--page); color: var(--ink);
+    border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; max-width: 60vw; }
+  #scanbar .sb-go { margin-left: auto; color: var(--accent); text-decoration: none; cursor: pointer;
+    background: none; border: none; font: inherit; font-size: 13px; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 40px 20px; }
   .kicker { text-transform: uppercase; letter-spacing: .14em; font-size: 12px;
             color: var(--ink-2); font-weight: 600; }
   h1 { font-size: 28px; margin: 6px 0 4px; }
@@ -33,6 +41,11 @@
 </style>
 </head>
 <body>
+<div id="scanbar">
+  <span class="sb-label">Scan date</span>
+  <select id="scan-select" aria-label="Select scan date"></select>
+  <button class="sb-go" id="scan-open" type="button">Open report →</button>
+</div>
 <div class="wrap">
   <div class="kicker">Trading Research</div>
   <h1>Research Reports</h1>
@@ -40,12 +53,40 @@
     AI-generated (Claude) from TradingView data — technical observation, not investment advice.</div>
 
   <h2>B LIST weekly deep dives</h2>
-  <a class="card" href="b-list-weekly-research-2026-07-27.html">
-    <div class="t">2026-07-27 — FOMC + Four Mega-Cap Prints Land on a Broken Tape</div>
-    <div class="d">21 symbols · W→D→4H→1H→15m · trend matrix, key levels, market structure, day-trading playbook</div>
-  </a>
+  <div id="cards"><noscript>Enable JavaScript to see the report list, or browse the repository files directly.</noscript></div>
 
-  <div class="foot">Each report is a self-contained page (charts embedded). Levels dated as of the report's close date.</div>
+  <div class="foot">Each report is a self-contained page (charts embedded). Levels dated as of the report's close date.
+    Use the dropdown above to jump straight to a scan.</div>
 </div>
+<script>
+(function () {
+  fetch("reports.json").then(function (r) { return r.json(); }).then(function (j) {
+    var reps = (j && j.reports) || [];
+    var sel = document.getElementById("scan-select");
+    var cards = document.getElementById("cards");
+    reps.forEach(function (rep, i) {
+      var o = document.createElement("option");
+      o.value = rep.file;
+      o.textContent = rep.date + " — " + rep.title;
+      if (i === 0) o.selected = true;
+      sel.appendChild(o);
+      var a = document.createElement("a");
+      a.className = "card"; a.href = rep.file;
+      var t = document.createElement("div"); t.className = "t";
+      t.textContent = rep.date + " — " + rep.title;
+      var d = document.createElement("div"); d.className = "d";
+      d.textContent = rep.subtitle || "";
+      a.appendChild(t); a.appendChild(d);
+      cards.appendChild(a);
+    });
+    function go() { if (sel.value) location.href = sel.value; }
+    sel.addEventListener("change", go);
+    document.getElementById("scan-open").addEventListener("click", go);
+  }).catch(function () {
+    var c = document.getElementById("cards");
+    c.textContent = "Could not load the report list — browse the repository files directly.";
+  });
+})();
+</script>
 </body>
 </html>

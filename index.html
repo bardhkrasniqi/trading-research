@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trading Research — Bardh</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+    --muted: #898781; --border: rgba(11,11,11,.10); --accent: #2a78d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --page: #0d0d0d; --surface: #1a1a19; --ink: #fff; --ink-2: #c3c2b7;
+            --border: rgba(255,255,255,.10); --accent: #3987e5; }
+  }
+  body { margin: 0; background: var(--page); color: var(--ink);
+         font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 48px 20px; }
+  .kicker { text-transform: uppercase; letter-spacing: .14em; font-size: 12px;
+            color: var(--ink-2); font-weight: 600; }
+  h1 { font-size: 28px; margin: 6px 0 4px; }
+  .sub { color: var(--ink-2); margin-bottom: 28px; }
+  h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .08em;
+       color: var(--ink-2); margin: 32px 0 10px; }
+  a.card { display: block; background: var(--surface); border: 1px solid var(--border);
+           border-radius: 10px; padding: 14px 18px; margin: 10px 0;
+           text-decoration: none; color: var(--ink); }
+  a.card:hover { border-color: var(--accent); }
+  a.card .t { font-weight: 600; }
+  a.card .d { font-size: 13.5px; color: var(--ink-2); margin-top: 2px; }
+  .foot { margin-top: 48px; font-size: 12.5px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Trading Research</div>
+  <h1>Research Reports</h1>
+  <div class="sub">Multi-timeframe technical reviews of the B LIST watchlist.
+    AI-generated (Claude) from TradingView data — technical observation, not investment advice.</div>
+
+  <h2>B LIST weekly deep dives</h2>
+  <a class="card" href="b-list-weekly-research-2026-07-27.html">
+    <div class="t">2026-07-27 — FOMC + Four Mega-Cap Prints Land on a Broken Tape</div>
+    <div class="d">21 symbols · W→D→4H→1H→15m · trend matrix, key levels, market structure, day-trading playbook</div>
+  </a>
+
+  <div class="foot">Each report is a self-contained page (charts embedded). Levels dated as of the report's close date.</div>
+</div>
+</body>
+</html>

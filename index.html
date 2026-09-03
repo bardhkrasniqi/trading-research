@@ -4,39 +4,44 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trading Research — Bardh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     color-scheme: light dark;
-    --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
-    --muted: #898781; --border: rgba(11,11,11,.10); --accent: #2a78d6;
+    --page: #f5f5f2; --surface: #ffffff; --surface-2: #f0f0ec; --ink: #161615; --ink-2: #4f4e4a;
+    --muted: #85837c; --border: rgba(22,22,21,.11); --accent: #2a78d6;
   }
   @media (prefers-color-scheme: dark) {
-    :root { --page: #0d0d0d; --surface: #1a1a19; --ink: #fff; --ink-2: #c3c2b7;
-            --border: rgba(255,255,255,.10); --accent: #3987e5; }
+    :root { --page: #101010; --surface: #1a1a19; --surface-2: #232321; --ink: #f3f3ef; --ink-2: #c3c2b7;
+            --muted: #8d8b84; --border: rgba(255,255,255,.11); --accent: #3987e5; }
   }
+  * { box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
   body { margin: 0; background: var(--page); color: var(--ink);
-         font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+         font: 15px/1.5 "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   #scanbar { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; gap: 10px;
     background: var(--surface); border-bottom: 1px solid var(--border); padding: 8px 20px; font-size: 13px; }
-  #scanbar .sb-label { text-transform: uppercase; letter-spacing: .08em; font-weight: 600;
-    color: var(--ink-2); font-size: 11px; white-space: nowrap; }
+  #scanbar .sb-label { font-weight: 600; color: var(--ink-2); font-size: 12px; white-space: nowrap; }
   #scanbar select { font: inherit; font-size: 13px; background: var(--page); color: var(--ink);
     border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; max-width: 60vw; }
   #scanbar .sb-go { margin-left: auto; color: var(--accent); text-decoration: none; cursor: pointer;
     background: none; border: none; font: inherit; font-size: 13px; }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 40px 20px; }
-  .kicker { text-transform: uppercase; letter-spacing: .14em; font-size: 12px;
-            color: var(--ink-2); font-weight: 600; }
-  h1 { font-size: 28px; margin: 6px 0 4px; }
-  .sub { color: var(--ink-2); margin-bottom: 28px; }
-  h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .08em;
-       color: var(--ink-2); margin: 32px 0 10px; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 20px 60px; }
+  .kicker { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+  h1 { font-size: 28px; font-weight: 600; letter-spacing: -.012em; margin: 4px 0 6px; }
+  .sub { color: var(--ink-2); margin-bottom: 28px; max-width: 66ch; }
+  h2 { font-size: 15px; font-weight: 600; color: var(--ink-2); margin: 30px 0 10px; }
   a.card { display: block; background: var(--surface); border: 1px solid var(--border);
-           border-radius: 10px; padding: 14px 18px; margin: 10px 0;
-           text-decoration: none; color: var(--ink); }
+           border-radius: 10px; padding: 14px 18px; margin: 10px 0; text-decoration: none; color: var(--ink); }
   a.card:hover { border-color: var(--accent); }
-  a.card .t { font-weight: 600; }
-  a.card .d { font-size: 13.5px; color: var(--ink-2); margin-top: 2px; }
+  a.card.latest { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+  a.card .d0 { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  a.card .d0 .tag { display: inline-block; margin-left: 8px; font-size: 11.5px; font-weight: 600; color: var(--accent); }
+  a.card .t { font-weight: 600; margin-top: 2px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  a.card .d { font-size: 13.5px; color: var(--ink-2); margin-top: 4px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   .foot { margin-top: 48px; font-size: 12.5px; color: var(--muted); }
 </style>
 </head>
@@ -44,22 +49,23 @@
 <div id="scanbar">
   <span class="sb-label">Scan date</span>
   <select id="scan-select" aria-label="Select scan date"></select>
-  <button class="sb-go" id="scan-open" type="button">Open report →</button>
+  <button class="sb-go" id="scan-open" type="button">Open report</button>
 </div>
 <div class="wrap">
   <div class="kicker">Trading Research</div>
-  <h1>Research Reports</h1>
-  <div class="sub">Multi-timeframe technical reviews of the B LIST watchlist.
-    AI-generated (Claude) from TradingView data — technical observation, not investment advice.</div>
+  <h1>B LIST daily briefing</h1>
+  <div class="sub">Pre-open technical review of the B LIST watchlist, weekly to 15-minute, one page a day.
+    AI-generated (Claude) from TradingView data. Technical observation, not investment advice.</div>
 
-  <h2>B LIST weekly deep dives</h2>
+  <h2>Reports, newest first</h2>
   <div id="cards"><noscript>Enable JavaScript to see the report list, or browse the repository files directly.</noscript></div>
 
-  <div class="foot">Each report is a self-contained page (charts embedded). Levels dated as of the report's close date.
+  <div class="foot">Each report is a self-contained page (charts embedded). Levels are dated as of the report's close date.
     Use the dropdown above to jump straight to a scan.</div>
 </div>
 <script>
 (function () {
+  function clip(s, n) { return s.length > n ? s.slice(0, n) + "…" : s; }
   fetch("reports.json").then(function (r) { return r.json(); }).then(function (j) {
     var reps = (j && j.reports) || [];
     var sel = document.getElementById("scan-select");
@@ -67,16 +73,16 @@
     reps.forEach(function (rep, i) {
       var o = document.createElement("option");
       o.value = rep.file;
-      o.textContent = rep.date + " — " + rep.title;
+      o.textContent = rep.date + " — " + clip(rep.title, 72);
       if (i === 0) o.selected = true;
       sel.appendChild(o);
       var a = document.createElement("a");
-      a.className = "card"; a.href = rep.file;
-      var t = document.createElement("div"); t.className = "t";
-      t.textContent = rep.date + " — " + rep.title;
-      var d = document.createElement("div"); d.className = "d";
-      d.textContent = rep.subtitle || "";
-      a.appendChild(t); a.appendChild(d);
+      a.className = "card" + (i === 0 ? " latest" : ""); a.href = rep.file;
+      var d0 = document.createElement("div"); d0.className = "d0"; d0.textContent = rep.date;
+      if (i === 0) { var tg = document.createElement("span"); tg.className = "tag"; tg.textContent = "Latest"; d0.appendChild(tg); }
+      var t = document.createElement("div"); t.className = "t"; t.textContent = rep.title;
+      var d = document.createElement("div"); d.className = "d"; d.textContent = rep.subtitle || "";
+      a.appendChild(d0); a.appendChild(t); a.appendChild(d);
       cards.appendChild(a);
     });
     function go() { if (sel.value) location.href = sel.value; }

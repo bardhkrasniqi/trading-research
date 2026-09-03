@@ -190,8 +190,21 @@
   #scanbar .sb-label { font-weight: 600; color: var(--ink-2); font-size: 12px; white-space: nowrap; }
   #scanbar select { font: inherit; font-size: 13px; background: var(--page); color: var(--ink);
     border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; max-width: 60vw; }
-  #scanbar a { margin-left: auto; color: var(--pos); text-decoration: none; }
-  #scanbar a:hover { text-decoration: underline; }
+  #scanbar .sb-all { margin-left: auto; color: var(--pos); text-decoration: none; white-space: nowrap; }
+  #scanbar .sb-all:hover { text-decoration: underline; }
+  .sb-nav { display: flex; gap: 14px; margin-left: 14px; font-size: 12.5px; font-weight: 500; }
+  .sb-nav a { color: var(--ink-2); text-decoration: none; white-space: nowrap; }
+  .sb-nav a:hover { color: var(--pos); }
+  @media (max-width: 900px) { .sb-nav { display: none; } }
+  table.calls td.lbl { font-weight: 600; width: 150px; }
+  table.calls td.nm { white-space: nowrap; width: 150px; font-variant-numeric: tabular-nums; }
+  table.calls td.nm a { font-weight: 700; color: inherit; text-decoration: none; }
+  table.calls td.nm a:hover { text-decoration: underline; }
+  table.calls td.nm .stance { margin-top: 4px; }
+  .board th.sortable { cursor: pointer; user-select: none; }
+  .board th.sortable:hover { color: var(--ink); }
+  .board th[data-sort="desc"]::after { content: " \25BE"; }
+  .board th[data-sort="asc"]::after { content: " \25B4"; }
   @media (max-width: 700px) {
     .wrap { padding: 16px 14px 60px; }
     h1.headline { font-size: 23px; }
@@ -211,7 +224,8 @@
 <div id="scanbar">
   <span class="sb-label">Scan date</span>
   <select id="scan-select" aria-label="Select scan date"><option value="">2026-09-03</option></select>
-  <a href="index.html">All reports</a>
+  <nav class="sb-nav" aria-label="Sections"><a href="#exec">Bottom line</a><a href="#board">Board</a><a href="#week">Week</a><a href="#market">Market</a><a href="#dash">Returns</a><a href="#playbook">Playbook</a><a href="#names">Names</a></nav>
+  <a href="index.html" class="sb-all">All reports</a>
 </div>
 
 <div class="wrap">
@@ -264,16 +278,7 @@
   <li><b>A compressed board into two events.</b> The daily extension band is 2.34 ATR, narrowing a fifth session. Fear &amp; Greed sits in “Fear” with SPY 1.8% from its record, payrolls land Friday 08:30 into a long weekend, and ORCL reports Tuesday.</li>
 </ul>
 <h3>Top calls</h3>
-<div class="scroll"><table>
-  <tr><th style="width:120px">Call</th><th>Name</th><th>Why</th><th>Invalidation</th></tr>
-  <tr><td><b>The chart to open on</b></td><td><b>NVDA</b> 224.41</td><td>+3.21% on 1.24× — the board's heaviest relative volume — closing at 63% of a 1.25× ATR bar, badges ▲◆◆◆▼ → ▲▲▲▲◆ (+8). Back above all four daily EMAs (218.97 / 216.86 / 212.53 / 197.33) at +1.00 ATR on RSI 51.9 → 56.7. The 227.95 high cleared the 227.92 Aug 17 pivot high by three cents; the close is 35 cents beneath the 224.76 Aug 7 pivot high. Daily MACD histogram −0.002 — one tick from a bullish cross. RS +7.2% on five days, +6.7% on the month; 5.1% below its high, the closest of any single name</td><td><b>The print.</b> Every level on this card is pre-reaction. <b>221.89</b> is the 1H EMA21, <b>220.41</b> Tuesday's high (the level it cleared), <b>218.48</b> Wednesday's low and <b>216.86</b> the daily EMA21. A gap beneath 218.48 that is not reclaimed inside the first hour returns this to the 216.20–215.10 cluster. Overhead: <b>230.47 → 236.54</b></td></tr>
-  <tr><td><b>The break</b></td><td><b>PLTR</b> 169.46</td><td>−5.81% on 1.08× in the board's widest bar (1.50× ATR), closing at 32%. Opened beneath Tuesday's 179.75 low and closed beneath the 177.47 EMA10, the 170.64 EMA21 and the 169.77 Aug 19 pivot low, 56 cents above the 168.90 Aug 26 low after a 165.71 intraday low that broke all of them. 1H −2.89 ATR on RSI 28.1 — the deepest cell on the board. Badges <b>▲▲▲▼▼ → ▲◆◆▼▼</b>; RSI-D <b>61.9 → 52.2</b> in one session; daily histogram <b>−1.474</b>, negative for two bars</td><td>The weekly is still ▲ (RSI 57.2, +0.99 ATR, histogram +6.45) and the 168.90 / 168.34 pivot pair held on the close. A reclaim of 170.64 that holds is the first repair; a close beneath 168.34 opens a 7.6% path to the 156.61 EMA50 with nothing in it. Note the one-month return: +43.2% → +4.2% — the 21-day window rolled past the early-August earnings gap, not Wednesday's session</td></tr>
-  <tr><td><b>The line cleared, not closed</b></td><td><b>META</b> 592.85</td><td><b>+2.47% on 1.08× in a 1.16× ATR bar, closing at 68%.</b> The 600.38 high cleared yesterday's line (593.34, the Aug 26 pivot high) and the 599.23 weekly EMA21; the close is 49 cents beneath 593.34 and above the 587.74 daily EMA50. Histogram rising a fifth bar (→ 3.867), the steepest positive slope here; RSI-D 49.9 → 55.2; 4H ▲ at +1.43, 1H ▲ at +1.34. Badges <b>▼◆◆▲◆ → ▼◆▲▲◆</b></td><td>Still a weekly ▼ inside a 25.0% drawdown with the daily EMA stack fully inverted. 587.74 is the level just reclaimed and the stop; 584.95 / 584.48 beneath it; 577.25 / 577.00 the EMA21 and Wednesday's low. Above, 593.34 has to be a close, not a high — then 600.38 / 601.00 and 612.43. The 4H and 1H are the second and third most stretched intraday readings on the board</td></tr>
-  <tr><td><b>The perfect row</b></td><td><b>HOOD</b> 106.99</td><td>+3.36% on 0.92×, closing at 92% of an outside-day reversal: the 101.89 low broke Tuesday's 102.45 and the 107.46 high cleared Tuesday's 106.96. Badges ▲▲◆▼▼ → ▲▲▲▲▲ (+10) — the board's largest upgrade and its only perfect row. Above all four daily EMAs (104.43 / 101.94 / 98.97 / 93.92) at +0.86 ATR on RSI 56.5; RS +15.2% on the month, the best on the board; weekly histogram rising (→ +1.657)</td><td>The volume did not confirm (0.92×) and the daily histogram decayed a fifth bar (0.838 → 0.764) on a +3.4% session. 106.96 / 105.68 / 104.43 are the three holds; a close beneath 104.43 says the outside bar failed and 101.89 is back in play. 112.45, the Aug 25 pivot high, is 5.1% overhead and is the only structure before it</td></tr>
-  <tr><td><b>The reversal into the print</b></td><td><b>ORCL</b> 145.75</td><td>+3.13% on 0.97×, from a 139.72 low (23 cents through Tuesday's 139.95, one dollar above the 138.72 Aug 6 pivot) to a close at 87% of a 1.07× ATR range. Reclaimed the 145.16 EMA21 by 59 cents; badges ▼◆◆▼▼ → ▼◆◆◆▲ (+6); RSI-D 46.4 → 50.7; the weekly histogram back to +0.104. Still 57.8% below its high and the EMA10 (146.40) and EMA50 (148.21) are both overhead</td><td>Reports Tue Sep 8 (consensus $1.40, $420bn) — three sessions out. Every setup is an event bet. The repair needs 146.79 → 148.21 / 148.35; the structure beneath is 145.16 → 141.25 → 139.72 → 138.72. Anything held past Friday's close is held into the print across a long weekend</td></tr>
-  <tr><td><b>The perfect row that ended</b></td><td><b>AAPL</b> 324.96</td><td>−0.05% on 0.83×: a new high at 328.40 and a close at 29% of the range — the weakest close-in-range on the board. The four-scan ▲▲▲▲▲ run ended on the 15m (→ ◆). The daily is intact: +1.30 ATR (still the highest on the board), RSI 60.9, histogram rising a fifth bar (→ 1.759), above all four EMAs (317.45 / 315.27 / 311.56 / 286.24). RS +5.8% on the month; 5.7% below its high</td><td>The first bar in this advance where the buyers left before the bell. 323.53 is Wednesday's low, 322.37 the Aug 28 4H pivot, 320.28 the breakout shelf — beneath it the higher-high is undone. The 4H at +1.68 ATR on RSI 65.3 is the fourth most stretched cell on the page; a second fade from 328.40 should be read as distribution, not consolidation</td></tr>
-  <tr><td><b>Avoid</b></td><td><b>GOOGL</b> 337.12 · <b>CRWV</b> 80.93 · <b>AMD</b> 457.06</td><td>GOOGL: ◆▼▼▼▼ unchanged — the 333.05 short was run by 23 cents and reversed, which says the 333 area has buyers, not that the trend changed. Beneath all three short EMAs (341.41 / 344.26 / 348.48), −10.7% on the month. CRWV: ▼▼▼▼◆ unchanged, a fresh swing low at 79.58, the board's lowest daily extension (−1.04) and RSI (41.8), 47.2% below its high. AMD: ▲▼▼▼◆ → ◆▼▼▼▼ — the misleadingly green weekly badge resolved to ◆ (weekly RSI 54.8) and the 15m turned red; weekly histogram −14.21, the deepest here and deepening a fifth week</td><td>None is a mean-reversion candidate: the deepest daily extension on the board is −1.04. GOOGL needs 338.57 then 344.26; CRWV needs 83.23 then the 85.88–89.42 cluster; AMD sits on a 455.30 / 452.36 / 452.30 / 451.00 shelf that has now held four tests and has nothing beneath it until 446.00. AMD and CRWV are re-rated by the AVGO reaction before any level here applies</td></tr>
-</table></div>
+<div class="scroll"><table class="calls"><tr><th>Call</th><th>Name</th><th>Trigger</th><th>Invalidation</th></tr><tr><td class="lbl">The chart to open on</td><td class="nm"><a href="#nvda">NVDA</a> 224.41 <span class="chg up">+3.2%</span><br><span class="stance s-constructive">Constructive</span></td><td>Holds 220.41 through the first 30 minutes, then buy the reclaim of 227.95. Targets 230.47, then 236.54. Stop under 221.89.</td><td>A gap under 218.48 that is not reclaimed inside the first hour: 216.86 / 216.20 next, then 212.53 (EMA50).</td></tr><tr><td class="lbl">The break</td><td class="nm"><a href="#pltr">PLTR</a> 169.46 <span class="chg dn">−5.8%</span><br><span class="stance s-cautious">Cautious</span></td><td>Reclaim 170.64 and hold it 30 minutes: long to 176.62, then 177.47. Stop is a close under 168.34.</td><td>Loss of 165.71 is the continuation short, with nothing beneath until the 156.61 EMA50.</td></tr><tr><td class="lbl">The line cleared, not closed</td><td class="nm"><a href="#meta">META</a> 592.85 <span class="chg up">+2.5%</span><br><span class="stance s-neutralc">Neutral +</span></td><td>Pullback that holds 587.74, then a close through 593.34: targets 600.38 / 601.00, then 612.43. Stop is a loss of 584.48.</td><td>Loss of 587.74 in the first hour: 584.48, then 577.25. The base attempt itself is void only under 577.00.</td></tr><tr><td class="lbl">The perfect row</td><td class="nm"><a href="#hood">HOOD</a> 106.99 <span class="chg up">+3.4%</span><br><span class="stance s-constructive">Constructive</span></td><td>Hold 105.68 and buy through 107.46: targets 109.15, then 112.45. Stop under 104.43.</td><td>Loss of 104.43 in the first hour means the outside bar failed: 101.94 / 101.89 next.</td></tr><tr><td class="lbl">The reversal into the print</td><td class="nm"><a href="#orcl">ORCL</a> 145.75 <span class="chg up">+3.1%</span><br><span class="stance s-neutral">Neutral</span><span class="ev" title="event overlay">Earnings Tue Sep 8</span></td><td>Hold 145.16 and buy through 146.79: targets 148.21 / 148.35, then 153.99. Stop under 141.25.</td><td>Loss of 145.16: 141.25, then 139.72. Under 138.72 the base is gone.</td></tr><tr><td class="lbl">The perfect row that ended</td><td class="nm"><a href="#aapl">AAPL</a> 324.96 <span class="chg dn">−0.1%</span><br><span class="stance s-constructive">Constructive</span></td><td>Hold 323.53 / 322.37 and buy a reclaim of 328.40 only on a bar that closes in its upper third: open air toward 344.57. Stop under 322.37.</td><td>Loss of 323.53: 320.28 (the shelf), then 317.45. That is the higher-probability intraday trade if the open is weak.</td></tr><tr><td class="lbl">Avoid</td><td class="nm"><a href="#amd">AMD</a> 457.06 <span class="chg dn">−0.5%</span><br><span class="stance s-cautious">Cautious</span></td><td>Loss of 451.00 on volume: short to 446.00, then open air toward 372.25. Stop above 455.30.</td><td>Above 463.21: 469.26, then 477.21.</td></tr><tr><td class="lbl">Avoid</td><td class="nm"><a href="#googl">GOOGL</a> 337.12 <span class="chg up">+0.6%</span><br><span class="stance s-avoid">Avoid</span></td><td>Counter-trend scalp only: reclaim 338.57 held an hour, to 340.88 / 341.41, then 344.26. Stop under 336.41.</td><td>A close (not a probe) under 332.82 is the short again, to 326.06.</td></tr><tr><td class="lbl">Avoid</td><td class="nm"><a href="#crwv">CRWV</a> 80.93 <span class="chg dn">−1.1%</span><br><span class="stance s-avoid">Avoid</span></td><td>A close (not a probe) under 79.58 is the continuation short, sized for a 7.7% ATR and no support.</td><td>Reclaim of 83.23 held a session: 85.88–87.43.</td></tr></table></div>
 <details><summary>Scorecard: how Wednesday's calls did</summary>
 <p><b>Scorecard on yesterday's edition — right on the names it argued about, wrong on the shorts.</b> The three
 premarket questions: "Does AAPL hold 320.28?" — yes, the low was 323.53, but it made a new high and closed
@@ -297,7 +302,7 @@ contradiction to record: the playbook said "do not take it in ORCL, GOOGL or CRW
 own primary was the 145.10 reclaim. The card was right and the playbook was wrong; ORCL was the third-best
 advance on the board.</p>
 </details>
-<details><summary>Full read: the session in detail</summary>
+<details><summary>Full read: the session in detail, and the case for each call</summary>
 <p class="lede">The verdict: Wednesday was a rotation, not a recovery — and it was a rotation back into the
 one thing that was about to be repriced. The census moved from 26 ▲ / 33 ◆ / 43 ▼ to
 30 ▲ / 40 ◆ / 32 ▼ of 105 cells on +30 net badge notches, recovering less than half of Tuesday's
@@ -355,6 +360,16 @@ from crossing the other way. Sentiment moved further than price: CNN Fear &amp; 
 as of Wednesday 09:13 ET, from 53.9 a week ago, with SPY 1.8% from its record. A board compressed into
 a 2.3-ATR daily band, with its fast frames repaired and its daily column weakened, sits under a print it cannot
 see and a payrolls release it can.</p>
+<div class="scroll"><table>
+  <tr><th style="width:120px">Call</th><th>Name</th><th>Why</th><th>Invalidation</th></tr>
+  <tr><td><b>The chart to open on</b></td><td><b>NVDA</b> 224.41</td><td>+3.21% on 1.24× — the board's heaviest relative volume — closing at 63% of a 1.25× ATR bar, badges ▲◆◆◆▼ → ▲▲▲▲◆ (+8). Back above all four daily EMAs (218.97 / 216.86 / 212.53 / 197.33) at +1.00 ATR on RSI 51.9 → 56.7. The 227.95 high cleared the 227.92 Aug 17 pivot high by three cents; the close is 35 cents beneath the 224.76 Aug 7 pivot high. Daily MACD histogram −0.002 — one tick from a bullish cross. RS +7.2% on five days, +6.7% on the month; 5.1% below its high, the closest of any single name</td><td><b>The print.</b> Every level on this card is pre-reaction. <b>221.89</b> is the 1H EMA21, <b>220.41</b> Tuesday's high (the level it cleared), <b>218.48</b> Wednesday's low and <b>216.86</b> the daily EMA21. A gap beneath 218.48 that is not reclaimed inside the first hour returns this to the 216.20–215.10 cluster. Overhead: <b>230.47 → 236.54</b></td></tr>
+  <tr><td><b>The break</b></td><td><b>PLTR</b> 169.46</td><td>−5.81% on 1.08× in the board's widest bar (1.50× ATR), closing at 32%. Opened beneath Tuesday's 179.75 low and closed beneath the 177.47 EMA10, the 170.64 EMA21 and the 169.77 Aug 19 pivot low, 56 cents above the 168.90 Aug 26 low after a 165.71 intraday low that broke all of them. 1H −2.89 ATR on RSI 28.1 — the deepest cell on the board. Badges <b>▲▲▲▼▼ → ▲◆◆▼▼</b>; RSI-D <b>61.9 → 52.2</b> in one session; daily histogram <b>−1.474</b>, negative for two bars</td><td>The weekly is still ▲ (RSI 57.2, +0.99 ATR, histogram +6.45) and the 168.90 / 168.34 pivot pair held on the close. A reclaim of 170.64 that holds is the first repair; a close beneath 168.34 opens a 7.6% path to the 156.61 EMA50 with nothing in it. Note the one-month return: +43.2% → +4.2% — the 21-day window rolled past the early-August earnings gap, not Wednesday's session</td></tr>
+  <tr><td><b>The line cleared, not closed</b></td><td><b>META</b> 592.85</td><td><b>+2.47% on 1.08× in a 1.16× ATR bar, closing at 68%.</b> The 600.38 high cleared yesterday's line (593.34, the Aug 26 pivot high) and the 599.23 weekly EMA21; the close is 49 cents beneath 593.34 and above the 587.74 daily EMA50. Histogram rising a fifth bar (→ 3.867), the steepest positive slope here; RSI-D 49.9 → 55.2; 4H ▲ at +1.43, 1H ▲ at +1.34. Badges <b>▼◆◆▲◆ → ▼◆▲▲◆</b></td><td>Still a weekly ▼ inside a 25.0% drawdown with the daily EMA stack fully inverted. 587.74 is the level just reclaimed and the stop; 584.95 / 584.48 beneath it; 577.25 / 577.00 the EMA21 and Wednesday's low. Above, 593.34 has to be a close, not a high — then 600.38 / 601.00 and 612.43. The 4H and 1H are the second and third most stretched intraday readings on the board</td></tr>
+  <tr><td><b>The perfect row</b></td><td><b>HOOD</b> 106.99</td><td>+3.36% on 0.92×, closing at 92% of an outside-day reversal: the 101.89 low broke Tuesday's 102.45 and the 107.46 high cleared Tuesday's 106.96. Badges ▲▲◆▼▼ → ▲▲▲▲▲ (+10) — the board's largest upgrade and its only perfect row. Above all four daily EMAs (104.43 / 101.94 / 98.97 / 93.92) at +0.86 ATR on RSI 56.5; RS +15.2% on the month, the best on the board; weekly histogram rising (→ +1.657)</td><td>The volume did not confirm (0.92×) and the daily histogram decayed a fifth bar (0.838 → 0.764) on a +3.4% session. 106.96 / 105.68 / 104.43 are the three holds; a close beneath 104.43 says the outside bar failed and 101.89 is back in play. 112.45, the Aug 25 pivot high, is 5.1% overhead and is the only structure before it</td></tr>
+  <tr><td><b>The reversal into the print</b></td><td><b>ORCL</b> 145.75</td><td>+3.13% on 0.97×, from a 139.72 low (23 cents through Tuesday's 139.95, one dollar above the 138.72 Aug 6 pivot) to a close at 87% of a 1.07× ATR range. Reclaimed the 145.16 EMA21 by 59 cents; badges ▼◆◆▼▼ → ▼◆◆◆▲ (+6); RSI-D 46.4 → 50.7; the weekly histogram back to +0.104. Still 57.8% below its high and the EMA10 (146.40) and EMA50 (148.21) are both overhead</td><td>Reports Tue Sep 8 (consensus $1.40, $420bn) — three sessions out. Every setup is an event bet. The repair needs 146.79 → 148.21 / 148.35; the structure beneath is 145.16 → 141.25 → 139.72 → 138.72. Anything held past Friday's close is held into the print across a long weekend</td></tr>
+  <tr><td><b>The perfect row that ended</b></td><td><b>AAPL</b> 324.96</td><td>−0.05% on 0.83×: a new high at 328.40 and a close at 29% of the range — the weakest close-in-range on the board. The four-scan ▲▲▲▲▲ run ended on the 15m (→ ◆). The daily is intact: +1.30 ATR (still the highest on the board), RSI 60.9, histogram rising a fifth bar (→ 1.759), above all four EMAs (317.45 / 315.27 / 311.56 / 286.24). RS +5.8% on the month; 5.7% below its high</td><td>The first bar in this advance where the buyers left before the bell. 323.53 is Wednesday's low, 322.37 the Aug 28 4H pivot, 320.28 the breakout shelf — beneath it the higher-high is undone. The 4H at +1.68 ATR on RSI 65.3 is the fourth most stretched cell on the page; a second fade from 328.40 should be read as distribution, not consolidation</td></tr>
+  <tr><td><b>Avoid</b></td><td><b>GOOGL</b> 337.12 · <b>CRWV</b> 80.93 · <b>AMD</b> 457.06</td><td>GOOGL: ◆▼▼▼▼ unchanged — the 333.05 short was run by 23 cents and reversed, which says the 333 area has buyers, not that the trend changed. Beneath all three short EMAs (341.41 / 344.26 / 348.48), −10.7% on the month. CRWV: ▼▼▼▼◆ unchanged, a fresh swing low at 79.58, the board's lowest daily extension (−1.04) and RSI (41.8), 47.2% below its high. AMD: ▲▼▼▼◆ → ◆▼▼▼▼ — the misleadingly green weekly badge resolved to ◆ (weekly RSI 54.8) and the 15m turned red; weekly histogram −14.21, the deepest here and deepening a fifth week</td><td>None is a mean-reversion candidate: the deepest daily extension on the board is −1.04. GOOGL needs 338.57 then 344.26; CRWV needs 83.23 then the 85.88–89.42 cluster; AMD sits on a 455.30 / 452.36 / 452.30 / 451.00 shelf that has now held four tests and has nothing beneath it until 446.00. AMD and CRWV are re-rated by the AVGO reaction before any level here applies</td></tr>
+</table></div>
 </details>
 </section>
 <section id="board">
@@ -604,7 +619,7 @@ IGV 30%, PLTR 32%, CRWV 46%, MSFT 47%, AMD 48%.
 Each card opens with the bias, the trigger and what invalidates it; the numbers row is computed from the scan; the full read and chart sit under “Full read”.
 All prices are Wednesday Sep 2's completed close. Cards are ordered by decision relevance.</p>
 <!-- NVDA -->
-<article class="card" id="nvda" data-stance="constructive">
+<article class="card" id="nvda" data-stance="constructive" data-call="The chart to open on">
 <header class="ch">
   <div class="id"><span class="tkr">NVDA</span><span class="co">NVIDIA</span></div>
   <div class="q"><span class="px">224.41</span><span class="chg up">▲ +3.2%</span><span class="rv">1.24× vol</span></div>
@@ -667,7 +682,7 @@ in since Aug 27, which is exactly why a bad reaction has further to travel.</div
 </details>
 </article>
 <!-- PLTR -->
-<article class="card" id="pltr" data-stance="cautious">
+<article class="card" id="pltr" data-stance="cautious" data-call="The break">
 <header class="ch">
   <div class="id"><span class="tkr">PLTR</span><span class="co">Palantir</span></div>
   <div class="q"><span class="px">169.46</span><span class="chg dn">▼ −5.8%</span><span class="rv">1.08× vol</span></div>
@@ -734,7 +749,7 @@ which is a description of how far this chart can fall without the weekly noticin
 </details>
 </article>
 <!-- META -->
-<article class="card" id="meta" data-stance="neutral-constructive">
+<article class="card" id="meta" data-stance="neutral-constructive" data-call="The line cleared, not closed">
 <header class="ch">
   <div class="id"><span class="tkr">META</span><span class="co">Meta Platforms</span></div>
   <div class="q"><span class="px">592.85</span><span class="chg up">▲ +2.5%</span><span class="rv">1.08× vol</span></div>
@@ -799,7 +814,7 @@ the bid for damaged megacaps survives its partner's fade.</div>
 </details>
 </article>
 <!-- HOOD -->
-<article class="card" id="hood" data-stance="constructive">
+<article class="card" id="hood" data-stance="constructive" data-call="The perfect row">
 <header class="ch">
   <div class="id"><span class="tkr">HOOD</span><span class="co">Robinhood Markets</span></div>
   <div class="q"><span class="px">106.99</span><span class="chg up">▲ +3.4%</span><span class="rv">0.92× vol</span></div>
@@ -862,7 +877,7 @@ five-bar histogram decay is a chart that has done the easy part. The hard part i
 </details>
 </article>
 <!-- ORCL -->
-<article class="card" id="orcl" data-stance="neutral" data-event="Earnings Tue Sep 8">
+<article class="card" id="orcl" data-stance="neutral" data-event="Earnings Tue Sep 8" data-call="The reversal into the print">
 <header class="ch">
   <div class="id"><span class="tkr">ORCL</span><span class="co">Oracle</span></div>
   <div class="q"><span class="px">145.75</span><span class="chg up">▲ +3.1%</span><span class="rv">0.97× vol</span></div>
@@ -927,7 +942,7 @@ below its high with a 4.5% daily ATR.</div>
 </details>
 </article>
 <!-- AAPL -->
-<article class="card" id="aapl" data-stance="constructive">
+<article class="card" id="aapl" data-stance="constructive" data-call="The perfect row that ended">
 <header class="ch">
   <div class="id"><span class="tkr">AAPL</span><span class="co">Apple</span></div>
   <div class="q"><span class="px">324.96</span><span class="chg dn">▼ −0.1%</span><span class="rv">0.83× vol</span></div>
@@ -1221,7 +1236,7 @@ levels apply — wait for the first 15-minute bar to close before treating the i
 </details>
 </article>
 <!-- AMD -->
-<article class="card" id="amd" data-stance="cautious">
+<article class="card" id="amd" data-stance="cautious" data-call="Avoid">
 <header class="ch">
   <div class="id"><span class="tkr">AMD</span><span class="co">Advanced Micro Devices</span></div>
   <div class="q"><span class="px">457.06</span><span class="chg dn">▼ −0.5%</span><span class="rv">0.59× vol</span></div>
@@ -1322,7 +1337,7 @@ exposed to the AVGO reaction; payrolls Friday is its next catalyst.</div>
 </details>
 </article>
 <!-- GOOGL -->
-<article class="card" id="googl" data-stance="avoid">
+<article class="card" id="googl" data-stance="avoid" data-call="Avoid">
 <header class="ch">
   <div class="id"><span class="tkr">GOOGL</span><span class="co">Alphabet</span></div>
   <div class="q"><span class="px">337.12</span><span class="chg up">▲ +0.6%</span><span class="rv">0.96× vol</span></div>
@@ -1425,7 +1440,7 @@ here is tested.</div>
 </details>
 </article>
 <!-- CRWV -->
-<article class="card" id="crwv" data-stance="avoid">
+<article class="card" id="crwv" data-stance="avoid" data-call="Avoid">
 <header class="ch">
   <div class="id"><span class="tkr">CRWV</span><span class="co">CoreWeave</span></div>
   <div class="q"><span class="px">80.93</span><span class="chg dn">▼ −1.1%</span><span class="rv">0.57× vol</span></div>
@@ -1674,7 +1689,7 @@ sentiment: CNN Fear &amp; Greed via scanner cache · calendar: Nasdaq/Fed/public
       var lb = document.createElement("span"); lb.className = "lb"; lb.textContent = d[0];
       var track = document.createElement("span"); track.className = "track";
       var vl = document.createElement("span"); vl.className = "vl";
-      var txt = (opts.diverging && v > 0 ? "+" : (opts.diverging ? "" : "−")) + Math.abs(v).toFixed(1) + "%";
+      var txt = (opts.diverging ? (v > 0 ? "+" : (v < 0 ? "−" : "")) : "−") + Math.abs(v).toFixed(1) + "%";
       if (extremes.indexOf(i) !== -1) vl.textContent = txt;
       var bar = document.createElement("span"); bar.className = "bar";
       var half = opts.diverging;
@@ -1712,7 +1727,7 @@ sentiment: CNN Fear &amp; Greed via scanner cache · calendar: Nasdaq/Fed/public
       var tr = document.createElement("tr");
       var td1 = document.createElement("td"); td1.textContent = d[0];
       var td2 = document.createElement("td"); td2.className = "num";
-      td2.textContent = (opts.diverging && d[1] > 0 ? "+" : (opts.diverging ? "" : "−")) + Math.abs(d[1]).toFixed(1) + "%";
+      td2.textContent = (opts.diverging ? (d[1] > 0 ? "+" : (d[1] < 0 ? "−" : "")) : "−") + Math.abs(d[1]).toFixed(1) + "%";
       tr.appendChild(td1); tr.appendChild(td2); tbl.appendChild(tr);
     });
     tblWrap.appendChild(tbl);
@@ -1742,6 +1757,46 @@ sentiment: CNN Fear &amp; Greed via scanner cache · calendar: Nasdaq/Fed/public
         if (sel.value) location.href = sel.value;
       });
     }).catch(function () { /* offline / file:// — keep static label */ });
+  })();
+  // Board: click a number column to sort (first click = descending); "Name" restores the report order.
+  (function () {
+    var tbl = document.querySelector("table.board");
+    if (!tbl) return;
+    var ths = Array.prototype.slice.call(tbl.querySelectorAll("th"));
+    var rows = Array.prototype.slice.call(tbl.querySelectorAll("tr")).slice(1);
+    var orig = rows.slice();
+    var sepRow = tbl.querySelector("tr.sep");
+    var state = { col: -1, dir: -1 };
+    function val(tr, i) {
+      var t = tr.children[i].textContent.replace(/[−–]/g, "-").replace(/[×%+,]/g, "").trim();
+      var n = parseFloat(t);
+      return isNaN(n) ? null : n;
+    }
+    function clearMarks() { ths.forEach(function (h) { h.removeAttribute("data-sort"); }); }
+    ths.forEach(function (th, i) {
+      if (!th.classList.contains("num")) return;
+      th.classList.add("sortable"); th.title = "Sort by " + th.textContent.trim();
+      th.addEventListener("click", function () {
+        var dir = state.col === i ? -state.dir : -1;
+        state = { col: i, dir: dir };
+        var sorted = rows.slice().sort(function (a, b) {
+          var x = val(a, i), y = val(b, i);
+          if (x === null && y === null) return 0;
+          if (x === null) return 1;
+          if (y === null) return -1;
+          return (x - y) * dir;
+        });
+        clearMarks(); th.dataset.sort = dir > 0 ? "asc" : "desc";
+        if (sepRow) sepRow.classList.remove("sep");
+        sorted.forEach(function (r) { r.parentNode.appendChild(r); });
+      });
+    });
+    ths[0].classList.add("sortable"); ths[0].title = "Restore the report order";
+    ths[0].addEventListener("click", function () {
+      state = { col: -1, dir: -1 }; clearMarks();
+      if (sepRow) sepRow.classList.add("sep");
+      orig.forEach(function (r) { r.parentNode.appendChild(r); });
+    });
   })();
   var btn = document.getElementById("toggle-all");
   if (btn) {

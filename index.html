@@ -73,12 +73,14 @@
     reps.forEach(function (rep, i) {
       var o = document.createElement("option");
       o.value = rep.file;
-      o.textContent = rep.date + " — " + clip(rep.title, 72);
+      var weekly = rep.kind === "weekly";
+      o.textContent = rep.date + (weekly ? " · Weekly — " : " — ") + clip(rep.title, 72);
       if (i === 0) o.selected = true;
       sel.appendChild(o);
       var a = document.createElement("a");
       a.className = "card" + (i === 0 ? " latest" : ""); a.href = rep.file;
       var d0 = document.createElement("div"); d0.className = "d0"; d0.textContent = rep.date;
+      if (weekly) { var tw = document.createElement("span"); tw.className = "tag"; tw.textContent = "Weekly recap"; d0.appendChild(tw); }
       if (i === 0) { var tg = document.createElement("span"); tg.className = "tag"; tg.textContent = "Latest"; d0.appendChild(tg); }
       var t = document.createElement("div"); t.className = "t"; t.textContent = rep.title;
       var d = document.createElement("div"); d.className = "d"; d.textContent = rep.subtitle || "";

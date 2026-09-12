@@ -1,6 +1,13 @@
 {
  "reports": [
   {
+   "date": "2026-09-12",
+   "file": "b-list-weekly-2026-09-12.html",
+   "kind": "weekly",
+   "title": "The index slipped, AMD, META and AAPL broke out, NVDA and HOOD broke down",
+   "subtitle": "Weekly recap Sep 8–11: SPY −0.8% on three down days into CPI. AMD +8.1%, INTC +7.5%, META +5.1% and AAPL +3.8% broke out; HOOD −7.8%, ORCL −5.4% on the print, NVDA −5.2%. FOMC Wed Sep 16."
+  },
+  {
    "date": "2026-09-09",
    "file": "b-list-research-2026-09-09.html",
    "title": "Tuesday bought the laggards and sold the leaders; SPY closed under its EMA21",

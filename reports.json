@@ -1,6 +1,13 @@
 {
  "reports": [
   {
+   "date": "2026-09-26",
+   "file": "b-list-weekly-2026-09-26.html",
+   "kind": "weekly",
+   "title": "Seventeen of 22 rose, AMD and Apple set records, and Friday sold the leaders",
+   "subtitle": "Week of Sep 21–25: 17 of 22 rose, AMD and AAPL set records, META a 52-week high; Friday sold INTC, META and PLTR and bought MSFT through 509.95. Calls: 18 worked, 6 wash, 7 failed, 13 not triggered."
+  },
+  {
    "date": "2026-09-25",
    "file": "b-list-research-2026-09-25.html",
    "title": "Fifteen of 24 fell while META and AMD closed at new highs; ORCL sank",

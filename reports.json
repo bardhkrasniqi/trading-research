@@ -1,6 +1,13 @@
 {
  "reports": [
   {
+   "date": "2026-10-03",
+   "file": "b-list-weekly-2026-10-03.html",
+   "kind": "weekly",
+   "title": "Monday's sell-off was bought: QQQ, NVDA and AMD set records, memory sold Friday",
+   "subtitle": "Week of Sep 28–Oct 2: 13 of 24 rose, SPY −0.2%. Monday's 23-of-24 drop was bought back; QQQ, XLK, NVDA and AMD printed records Friday while HOOD, IONQ and SNDK led the losers."
+  },
+  {
    "date": "2026-10-02",
    "file": "b-list-research-2026-10-02.html",
    "title": "First-hour lows were bought: Micron ran 7% off its gap, GOOGL and HOOD broke",

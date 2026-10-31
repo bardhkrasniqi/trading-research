@@ -1,6 +1,13 @@
 {
  "reports": [
   {
+   "date": "2026-10-31",
+   "file": "b-list-weekly-2026-10-31.html",
+   "kind": "weekly",
+   "title": "Friday erased the Fed-week rally: all 25 names fell, INTC lost 29%",
+   "subtitle": "Nineteen of 24 fell Friday-to-Friday: INTC lost 29% on Friday, GOOGL 13% on its print, NVDA closed under its 200-day; TSLA was the one megacap gain. AAPL, PLTR and AMD report next week."
+  },
+  {
    "date": "2026-10-30",
    "file": "b-list-research-2026-10-30.html",
    "title": "GOOGL and MRVL fell 13%; the chips gave back Wednesday's gap",

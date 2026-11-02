@@ -1,6 +1,12 @@
 {
  "reports": [
   {
+   "date": "2026-11-02",
+   "file": "b-list-research-2026-11-02.html",
+   "title": "Friday took all 25 names down; INTC lost 29%, NVDA lost its 200-day",
+   "subtitle": "Every name fell Friday, an average 6.2%: SPY lost its fast averages, NVDA and INTC their 200-days. Two of eight calls paid. AAPL and PLTR report after today's close, AMD Tuesday."
+  },
+  {
    "date": "2026-10-31",
    "file": "b-list-weekly-2026-10-31.html",
    "kind": "weekly",
